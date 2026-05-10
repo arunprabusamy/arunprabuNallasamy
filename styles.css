@@ -143,6 +143,10 @@ nav {
   align-items: center;
 }
 
+.hero-grid>div {
+  min-width: 0;
+}
+
 .hero-tag {
   display: inline-flex;
   align-items: center;
@@ -181,8 +185,8 @@ nav {
 .hero-name {
   font-family: 'Syne', sans-serif;
   font-weight: 800;
-  /* Reduced from clamp(4rem, 10vw, 8rem) to fit within viewport */
-  font-size: clamp(2.5rem, 7vw, 5.2rem);
+  /* Reduced from clamp to fit within viewport perfectly without breaks */
+  font-size: clamp(1.5rem, 8.5vw, 5.2rem);
   line-height: 0.88;
   letter-spacing: -0.04em;
   text-transform: uppercase;
@@ -606,8 +610,14 @@ section {
 
 /* RESPONSIVE */
 @media(max-width:700px) {
+
+  .wrap,
+  .ni {
+    padding: 0 20px;
+  }
+
   .hero-grid {
-    grid-template-columns: 1fr
+    grid-template-columns: 1fr;
   }
 
   .hero-stats {
