@@ -31,6 +31,9 @@ body {
   font-size: 16px;
   line-height: 1.65;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 a {
@@ -113,10 +116,11 @@ nav {
 
 /* HERO */
 #hero {
-  min-height: 100vh;
+  flex: 1;
   display: flex;
   align-items: center;
-  padding-top: 58px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   position: relative;
   overflow: hidden;
 }
@@ -295,8 +299,33 @@ nav {
 .hero-stats {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  height: 290px;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(transparent, black 10%, black 90%, transparent);
   animation: fadeIn 0.8s 0.5s ease both;
+}
+
+.stats-track {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  animation: scroll-v 12s linear infinite;
+}
+
+.stats-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-v {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(calc(-50% - 1px));
+  }
 }
 
 .sbox {
@@ -621,13 +650,34 @@ section {
   }
 
   .hero-stats {
+    height: auto;
+    width: 100%;
+    margin-top: 10px;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
+  .stats-track {
+    display: flex;
     flex-direction: row;
-    flex-wrap: wrap
+    gap: 2px;
+    width: max-content;
+    animation: scroll-h 12s linear infinite;
+  }
+
+  @keyframes scroll-h {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(calc(-50% - 1px));
+    }
   }
 
   .sbox {
-    flex: 1;
-    min-width: 130px
+    flex: 0 0 auto;
+    min-width: 200px;
   }
 
   .nav-links {
